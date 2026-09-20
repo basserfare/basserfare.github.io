@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CS1.8反恐精英网页版在线游玩平台，提供经典CS1.8源码、服务器节点、游戏攻略、武器数据查询及版本更新资讯。无需下载，直接在浏览器中体验原汁原味的反恐精英射击乐趣。">
+    <meta name="keywords" content="cs1.8反恐精英网页版,CS1.8在线玩,CS1.8源码下载,CS1.8服务器,反恐精英网页版攻略">
+    <title>CS1.8反恐精英网页版 - 经典重制在线游玩与攻略平台</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #f39c12;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --bg-dark: #1a1a1a;
+            --bg-card: #252525;
+            --text-light: #ecf0f1;
+            --text-gray: #bdc3c7;
+            --spacing-unit: 1rem;
+            --border-radius: 8px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header */
+        header {
+            background-color: rgba(0, 0, 0, 0.9);
+            border-bottom: 2px solid var(--primary-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--text-light);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-weight: 600;
+            font-size: 1rem;
+            position: relative;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        .cta-button {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 0.6rem 1.5rem;
+            border-radius: 4px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .cta-button:hover {
+            background-color: #d35400;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('https://picsum.photos/seed/cstrike/1920/1080.jpg') center/cover no-repeat;
+        }
+
+        .hero-content {
+            z-index: 2;
+            max-width: 800px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: var(--text-gray);
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 2rem;
+        }
+
+        .stat-item h3 {
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        .stat-item p {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* Features Grid */
+        .features {
+            padding: 5rem 0;
+            background-color: var(--bg-dark);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            color: var(--text-gray);
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background-color: var(--bg-card);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            border-color: var(--primary-color);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .feature-card p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        /* Server List */
+        .servers {
+            padding: 5rem 0;
+            background-color: #1e1e1e;
+        }
+
+        .server-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        .server-table th, .server-table td {
+            padding: 1rem 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+
+        .server-table th {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .server-table tr:hover {
+            background-color: #2a2a2a;
+        }
+
+        .status-dot {
+            height: 10px;
+            width: 10px;
+            background-color: #2ecc71;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+        }
+
+        .status-dot.offline {
+            background-color: #e74c3c;
+        }
+
+        .server-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .server-players {
+            margin-left: auto;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Weapon Guide */
+        .guide {
+            padding: 5rem 0;
+        }
+
+        .guide-layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+        }
+
+        .guide-sidebar h3 {
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 1rem;
+        }
+
+        .guide-nav li {
+            margin-bottom: 0.5rem;
+        }
+
+        .guide-nav a {
+            display: block;
+            padding: 0.8rem;
+            background-color: var(--bg-card);
+            border-radius: 4px;
+            color: var(--text-gray);
+        }
+
+        .guide-nav a:hover, .guide-nav a.active {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+
+        .article-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .article-content p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .article-content img {
+            width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            margin: 1.5rem 0;
+            border: 1px solid #333;
+        }
+
+        .weapon-tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            background-color: #333;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--text-gray);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111;
+            padding: 4rem 0 2rem;
+            border-top: 1px solid #333;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h4 {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col ul li a {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #222;
+            color: #666;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .header-inner {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .guide-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <div class="logo">
+                CS1.8<span>WEB</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#servers">游戏服务器</a></li>
+                    <li><a href="#guide">武器攻略</a></li>
+                    <li><a href="#download">客户端下载</a></li>
+                </ul>
+            </nav>
+            <button class="cta-button" onclick="window.location.href='#servers'">立即开始</button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>CS1.8反恐精英网页版</h1>
+                <p>重温经典，无需安装客户端。在浏览器中直接体验原汁原味的CS1.8射击快感，流畅、稳定、真实。</p>
+                <div style="display: flex; gap: 1rem; justify-content: center;">
+                    <button class="cta-button" style="font-size: 1.2rem; padding: 0.8rem 2rem;">进入大厅</button>
+                    <button class="cta-button" style="background-color: transparent; border: 2px solid var(--primary-color); color: var(--primary-color);" onclick="window.location.href='#guide'">查看攻略</button>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <h3>10W+</h3>
+                        <p>日活玩家</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>128ms</h3>
+                        <p>全球低延迟</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>24/7</h3>
+                        <p>全天候运行</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <div class="container">
+                <div class="section-title">
+                    <h2>为什么选择 CS1.8 网页版？</h2>
+                    <p>专为浏览器优化的射击体验，还原经典玩法机制</p>
+                </div>
+                <div class="grid-container">
+                    <article class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>极速加载</h3>
+                        <p>基于WebGL技术渲染，无需下载庞大的客户端，打开网页即可秒级进入游戏，节省硬盘空间。</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon">🎮</div>
+                        <h3>经典还原</h3>
+                        <p>精准复刻CS1.8的弹道手感、武器模型与爆破模式规则，让老玩家找回当年的热血记忆。</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon">🛡️</div>
+                        <h3>公平竞技</h3>
+                        <p>内置反作弊系统，杜绝外挂干扰。公平的竞技环境，让技术成为决定胜负的唯一标准。</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Servers Section -->
+        <section id="servers" class="servers">
+            <div class="container">
+                <div class="section-title">
+                    <h2>热门游戏服务器</h2>
+                    <p>选择您所在区域，享受低延迟对战体验</p>
+                </div>
+                <table class="server-table">
+                    <thead>
+                        <tr>
+                            <th>服务器名称</th>
+                            <th>地区</th>
+                            <th>当前状态</th>
+                            <th>在线人数</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="server-info">
+                                    <span>🇨🇳 华东一区（经典爆破）</span>
+                                </div>
+                            </td>
+                            <td>上海</td>
+                            <td><span class="status-dot"></span>在线</td>
+                            <td class="server-players">248 / 32</td>
+                            <td><a href="#" style="color:var(--primary-color)">加入</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="server-info">
+                                    <span>🇨🇳 华南一区（团队竞技）</span>
+                                </div>
+                            </td>
+                            <td>广州</td>
+                            <td><span class="status-dot"></span>在线</td>
+                            <td class="server-players">186 / 32</td>
+                            <td><a href="#" style="color:var(--primary-color)">加入</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="server-info">
+                                    <span>🇺🇸 美西节点（国际服）</span>
+                                </div>
+                            </td>
+                            <td>洛杉矶</td>
+                            <td><span class="status-dot"></span>在线</td>
+                            <td class="server-players">45 / 32</td>
+                            <td><a href="#" style="color:var(--primary-color)">加入</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="server-info">
+                                    <span>🇪🇺 欧洲节点（欧洲服）</span>
+                                </div>
+                            </td>
+                            <td>法兰克福</td>
+                            <td><span class="status-dot offline"></span>维护中</td>
+                            <td class="server-players">0 / 32</td>
+                            <td><span style="color:#666">维护中</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Guide Section -->
+        <section id="guide" class="guide">
+            <div class="container">
+                <div class="section-title">
+                    <h2>武器与战术攻略</h2>
+                    <p>掌握核心技巧，成为战场主宰</p>
+                </div>
+                <div class="guide-layout">
+                    <aside class="guide-sidebar">
+                        <h3>武器百科</h3>
+                        <ul class="guide-nav">
+                            <li><a href="#" class="active">AK-47 突击步枪</a></li>
+                            <li><a href="#">M4A1-S 消音步枪</a></li>
+                            <li><a href="#">AWP 狙击步枪</a></li>
+                            <li><a href="#">Deagle 狙击手之友</a></li>
+                            <li><a href="#">MP5-SD 冲锋枪</a></li>
+                        </ul>
+                        <h3 style="margin-top: 2rem;">战术指南</h3>
+                        <ul class="guide-nav">
+                            <li><a href="#">爆破模式 A点进攻</a></li>
+                            <li><a href="#">沙二地图点位教学</a></li>
+                            <li><a href="#">残局处理技巧</a></li>
+                        </ul>
+                    </aside>
+                    <article class="article-content">
+                        <div class="weapon-tags">
+                            <span class="tag">高伤害</span>
+                            <span class="tag">后坐力大</span>
+                            <span class="tag">近战之王</span>
+                        </div>
+                        <h1>AK-47：暴力美学的极致</h1>
+                        <p>AK-47是CS1.8中威力最大的突击步枪之一，其单发伤害足以一击必杀大多数敌人。然而，AK-47的弹道控制难度极高，尤其是中远距离的压枪技巧，是区分新手与高手的分水岭。</p>
+                        <img src="https://picsum.photos/seed/ak47/800/400.jpg" alt="AK-47武器展示">
+                        <h3>核心技巧：三连发压枪</h3>
+                        <p>对于大多数玩家来说，全自动射击难以控制。最有效的压制方法是在短距离内使用三连发点射。这种方式能保证极高的命中率，且后坐力较小。瞄准敌人头部，快速连点三次鼠标左键，随后进行微小的垂直补偿。</p>
+                        <h3>实战应用</h3>
+                        <p>在爆破模式中，AK-47是CT（反恐精英）的噩梦。利用掩体快速推进，在敌人未察觉时进行三连发点射。在远距离遭遇时，尽量避免正面硬刚，应寻找掩体拉近距离后再开火。</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo" style="margin-bottom: 1rem;">CS1.8<span>WEB</span></div>
+                    <p style="color: #666; font-size: 0.9rem;">
+                        致力于为全球玩家提供最纯正的CS1.8网页版游戏体验。无需下载，即点即玩，重温经典。
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="#">关于我们</a></li>
+                        <li><a href="#">游戏公告</a></li>
+                        <li><a href="#">玩家社区</a></li>
+                        <li><a href="#">联系客服</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>游戏指南</h4>
+                    <ul>
+                        <li><a href="#">新手入门</a></li>
+                        <li><a href="#">武器数据表</a></li>
+                        <li><a href="#">地图下载</a></li>
+                        <li><a href="#">反作弊协议</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>关注我们</h4>
+                    <ul>
+                        <li><a href="#">官方微博</a></li>
+                        <li><a href="#">微信公众号</a></li>
+                        <li><a href="#">Discord社区</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 CS1.8 Web Version. All Rights Reserved. 本网站为游戏攻略与资讯平台，非游戏官方发行渠道。</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
