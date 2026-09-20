@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="木瓜网是一个专注于高清影视资源与在线观看的综合性视频平台，提供最新电影、电视剧、动漫、综艺等内容的在线播放与下载服务。">
+    <meta name="keywords" content="木瓜网,高清影视,在线观看,电影下载,电视剧全集,动漫资源">
+    <title>木瓜网-高清影视在线观看与资源分享平台</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #e50914;
+            --primary-hover: #b20710;
+            --bg-dark: #141414;
+            --bg-card: #1f1f1f;
+            --text-main: #ffffff;
+            --text-secondary: #b3b3b3;
+            --border-color: #333;
+            --spacing-unit: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header & Nav */
+        header {
+            background-color: rgba(0, 0, 0, 0.9);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+            padding: 0 var(--spacing-unit);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--text-main);
+        }
+
+        .search-box {
+            display: flex;
+            background: #000;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .search-box input {
+            background: transparent;
+            border: none;
+            padding: 8px 12px;
+            color: var(--text-main);
+            outline: none;
+            width: 200px;
+        }
+
+        .search-box button {
+            background: var(--primary-color);
+            border: none;
+            color: white;
+            padding: 0 12px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 56.25vw; /* 16:9 Aspect Ratio */
+            max-height: 80vh;
+            min-height: 400px;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            padding: 0 var(--spacing-unit);
+            max-width: 800px;
+            margin-top: 40px;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: 16px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .hero-meta {
+            display: flex;
+            gap: 16px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+        }
+
+        .hero-tags span {
+            background: rgba(255,255,255,0.2);
+            padding: 2px 8px;
+            border-radius: 2px;
+            font-size: 12px;
+        }
+
+        .hero-desc {
+            font-size: 1.1rem;
+            margin-bottom: 32px;
+            color: #ddd;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 24px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .btn-secondary {
+            background-color: rgba(255,255,255,0.2);
+            color: white;
+            margin-left: 12px;
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255,255,255,0.3);
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px var(--spacing-unit);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-title::before {
+            content: '';
+            display: block;
+            width: 4px;
+            height: 24px;
+            background-color: var(--primary-color);
+        }
+
+        .more-link {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .more-link:hover {
+            color: var(--text-main);
+        }
+
+        /* Grid System */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 24px;
+        }
+
+        .video-card {
+            background-color: var(--bg-card);
+            border-radius: 4px;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+
+        .video-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+        }
+
+        .card-cover {
+            position: relative;
+            padding-top: 140%; /* 5:7 Aspect Ratio */
+            background-color: #000;
+        }
+
+        .card-cover img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-info {
+            padding: 12px;
+        }
+
+        .card-title {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .card-badge {
+            color: var(--primary-color);
+        }
+
+        /* Sidebar Layout */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 32px;
+        }
+
+        @media (max-width: 768px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+            .nav-links {
+                display: none; /* Simplified mobile nav for demo */
+            }
+            .hero-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Sidebar */
+        .sidebar-section {
+            background-color: var(--bg-card);
+            padding: 20px;
+            border-radius: 4px;
+            margin-bottom: 24px;
+        }
+
+        .sidebar-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 16px;
+            padding-left: 10px;
+            border-left: 3px solid var(--primary-color);
+        }
+
+        .rank-list li {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 12px;
+            align-items: center;
+        }
+
+        .rank-num {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--text-secondary);
+            width: 20px;
+            text-align: center;
+        }
+
+        .rank-num.top-3 {
+            color: #ffd700;
+        }
+
+        .rank-info h4 {
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+
+        .rank-info p {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000;
+            border-top: 1px solid var(--border-color);
+            padding: 40px 0;
+            margin-top: 60px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-col h5 {
+            color: var(--text-main);
+            margin-bottom: 16px;
+            font-size: 1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #222;
+        }
+
+        /* Utility */
+        .tag {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 2px;
+            background: #333;
+            font-size: 0.75rem;
+            margin-right: 4px;
+        }
+        .tag-new { background: #2ba640; }
+        .tag-hot { background: #e50914; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="nav-container">
+        <a href="#" class="logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+            </svg>
+            <span>木瓜网</span>
+        </a>
+        <nav class="nav-links">
+            <a href="#" class="active">首页</a>
+            <a href="#">电影</a>
+            <a href="#">电视剧</a>
+            <a href="#">动漫</a>
+            <a href="#">综艺</a>
+            <a href="#">纪录片</a>
+        </nav>
+        <div class="search-box">
+            <input type="text" placeholder="搜索片名、演员...">
+            <button>🔍</button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- Hero Section -->
+    <section class="hero" style="background-image: url('https://picsum.photos/seed/hero-mgp/1920/1080.jpg');">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-tags">
+                <span class="tag tag-hot">热播</span>
+                <span class="tag">科幻</span>
+                <span class="tag">动作</span>
+            </div>
+            <h1 class="hero-title">星际穿越：无限边境</h1>
+            <div class="hero-meta">
+                <span>2024</span>
+                <span>•</span>
+                <span>科幻 / 冒险 / 剧情</span>
+                <span>•</span>
+                <span>2小时14分钟</span>
+            </div>
+            <p class="hero-desc">
+                在未来的地球，资源枯竭，人类面临灭绝危机。一支精英探险队穿越虫洞，寻找人类新的家园。这是一场关于爱、生存与未知的终极旅程。
+            </p>
+            <div>
+                <a href="#" class="btn btn-primary">立即播放</a>
+                <a href="#" class="btn btn-secondary">加入片单</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="container main-layout">
+        <!-- Main Content Area -->
+        <div class="content-area">
+            <!-- Section: Latest Updates -->
+            <section class="update-section">
+                <div class="section-header">
+                    <h2 class="section-title">最新更新</h2>
+                    <a href="#" class="more-link">查看全部 &gt;</a>
+                </div>
+                <div class="video-grid">
+                    <!-- Card 1 -->
+                    <article class="video-card">
+                        <a href="#" class="card-cover">
+                            <img src="https://picsum.photos/seed/mgp1/300/420.jpg" alt="剧集封面">
+                            <div style="position:absolute; bottom:8px; right:8px; background:rgba(0,0,0,0.7); padding:2px 6px; font-size:12px; border-radius:2px;">HD</div>
+                        </a>
+                        <div class="card-info">
+                            <h3 class="card-title"><a href="#">都市传说：暗夜行路</a></h3>
+                            <div class="card-meta">
+                                <span>更新至 12 集</span>
+                                <span class="card-badge">更新中</span>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- Card 2 -->
+                    <article class="video-card">
+                        <a href="#" class="card-cover">
+                            <img src="https://picsum.photos/seed/mgp2/300/420.jpg" alt="剧集封面">
+                            <div style="position:absolute; bottom:8px; right:8px; background:rgba(0,0,0,0.7); padding:2px 6px; font-size:12px; border-radius:2px;">HD</div>
+                        </a>
+                        <div class="card-info">
+                            <h3 class="card-title"><a href="#">深海探秘：未解之谜</a></h3>
+                            <div class="card-meta">
+                                <span>更新至 05 集</span>
+                                <span class="card-badge">更新中</span>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- Card 3 -->
+                    <article class="video-card">
+                        <a href="#" class="card-cover">
+                            <img src="https://picsum.photos/seed/mgp3/300/420.jpg" alt="剧集封面">
+                            <div style="position:absolute; bottom:8px; right:8px; background:rgba(0,0,0,0.7); padding:2px 6px; font-size:12px; border-radius:2px;">HD</div>
+                        </a>
+                        <div class="card-info">
+                            <h3 class="card-title"><a href="#">历史回响：古文明</a></h3>
+                            <div class="card-meta">
+                                <span>全 10 集</span>
+                                <span class="card-badge">已完结</span>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- Card 4 -->
+                    <article class="video-card">
+                        <a href="#" class="card-cover">
+                            <img src="https://picsum.photos/seed/mgp4/300/420.jpg" alt="剧集封面">
+                            <div style="position:absolute; bottom:8px; right:8px; background:rgba(0,0,0,0.7); padding:2px 6px; font-size:12px; border-radius:2px;">HD</div>
+                        </a>
+                        <div class="card-info">
+                            <h3 class="card-title"><a href="#">极速飙风：赛车传奇</a></h3>
+                            <div class="card-meta">
+                                <span>更新至 08 集</span>
+                                <span class="card-badge">更新中</span>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- Card 5 -->
+                    <article class="video-card">
+                        <a href="#" class="card-cover">
+                            <img src="https://picsum.photos/seed/mgp5/300/420.jpg" alt="剧集封面">
+                            <div style="position:absolute; bottom:8px; right:8px; background:rgba(0,0,0,0.7); padding:2px 6px; font-size:12px; border-radius:2px;">HD</div>
+                        </a>
+                        <div class="card-info">
+                            <h3 class="card-title"><a href="#">魔法学院：新篇章</a></h3>
+                            <div class="card-meta">
+                                <span>更新至 15 集</span>
+                                <span class="card-badge">更新中</span>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- Card 6 -->
+                    <article class="video-card">
+                        <a href="#" class="card-cover">
+                            <img src="https://picsum.photos/seed/mgp6/300/420.jpg" alt="剧集封面">
+                            <div style="position:absolute; bottom:8px; right:8px; background:rgba(0,0,0,0.7); padding:2px 6px; font-size:12px; border-radius:2px;">HD</div>
+                        </a>
+                        <div class="card-info">
+                            <h3 class="card-title"><a href="#">末世求生：基地</a></h3>
+                            <div class="card-meta">
+                                <span>更新至 20 集</span>
+                                <span class="card-badge">更新中</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Section: Popular Movies -->
+            <section class="movie-section" style="margin-top: 60px;">
+                <div class="section-header">
+                    <h2 class="section-title">热门电影</h2>
+                    <a href="#" class="more-link">查看全部 &gt;</a>
+                </div>
+                <div class="video-grid">
+                    <article class="video-card">
+                        <a href="#" class="card-cover">
+                            <img src="https://picsum.photos/seed/mov1/300/420.jpg" alt="电影封面">
+                        </a>
+                        <div class="card-info">
+                            <h3 class="card-title"><a href="#">寂静之地：入侵</a></h3>
+                            <div class="card-meta">
+                                <span>2024</span>
+                                <span>•</span>
+                                <span>恐怖 / 惊悚</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="video-card">
+                        <a href="#" class="card-cover">
+                            <img src="https://picsum.photos/seed/mov2/300/420.jpg" alt="电影封面">
+                        </a>
+                        <div class="card-info">
+                            <h3 class="card-title"><a href="#">黑客帝国：觉醒</a></h3>
+                            <div class="card-meta">
+                                <span>2024</span>
+                                <span>•</span>
+                                <span>动作 / 科幻</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="video-card">
+                        <a href="#" class="card-cover">
+                            <img src="https://picsum.photos/seed/mov3/300/420.jpg" alt="电影封面">
+                        </a>
+                        <div class="card-info">
+                            <h3 class="card-title"><a href="#">极速车魂：重生</a></h3>
+                            <div class="card-meta">
+                                <span>2023</span>
+                                <span>•</span>
+                                <span>赛车 / 犯罪</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="video-card">
+                        <a href="#" class="card-cover">
+                            <img src="https://picsum.photos/seed/mov4/300/420.jpg" alt="电影封面">
+                        </a>
+                        <div class="card-info">
+                            <h3 class="card-title"><a href="#">深海幽灵号</a></h3>
+                            <div class="card-meta">
+                                <span>2023</span>
+                                <span>•</span>
+                                <span>悬疑 / 冒险</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <!-- Ranking -->
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">本周飙升榜</h3>
+                <ul class="rank-list">
+                    <li>
+                        <span class="rank-num top-3">1</span>
+                        <div class="rank-info">
+                            <h4><a href="#">时光沙漏</a></h4>
+                            <p>科幻 / 9.8分</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="rank-num top-3">2</span>
+                        <div class="rank-info">
+                            <h4><a href="#">暗夜骑士归来</a></h4>
+                            <p>动作 / 9.6分</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="rank-num top-3">3</span>
+                        <div class="rank-info">
+                            <h4><a href="#">舌尖上的中国</a></h4>
+                            <p>纪录片 / 9.5分</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="rank-num">4</span>
+                        <div class="rank-info">
+                            <h4><a href="#">追光者</a></h4>
+                            <p>都市 / 9.3分</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="rank-num">5</span>
+                        <div class="rank-info">
+                            <h4><a href="#">森林奇遇记</a></h4>
+                            <p>动画 / 9.2分</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="rank-num">6</span>
+                        <div class="rank-info">
+                            <h4><a href="#">赛博侦探</a></h4>
+                            <p>剧情 / 9.1分</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Categories -->
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">热门分类</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                    <a href="#" class="tag">国产剧</a>
+                    <a href="#" class="tag">美剧</a>
+                    <a href="#" class="tag">日韩剧</a>
+                    <a href="#" class="tag">动漫</a>
+                    <a href="#" class="tag">电影</a>
+                    <a href="#" class="tag">综艺</a>
+                    <a href="#" class="tag">纪录片</a>
+                    <a href="#" class="tag">恐怖片</a>
+                    <a href="#" class="tag">爱情片</a>
+                    <a href="#" class="tag">科幻片</a>
+                </div>
+            </div>
+
+            <!-- Ad Placeholder -->
+            <div class="sidebar-section" style="background: #000; border: 1px dashed #333; display: flex; align-items: center; justify-content: center; height: 250px; color: #555;">
+                广告位招租
+            </div>
+        </aside>
+    </div>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-col">
+            <h5>关于木瓜网</h5>
+            <p style="font-size: 0.85rem; line-height: 1.8;">
+                木瓜网致力于为用户提供最新、最快、最全的高清影视资源。我们尊重版权，所有内容仅供学习交流，请于下载后24小时内删除。
+            </p>
+        </div>
+        <div class="footer-col">
+            <h5>快速链接</h5>
+            <ul>
+                <li><a href="#">网站地图</a></li>
+                <li><a href="#">帮助中心</a></li>
+                <li><a href="#">版权声明</a></li>
+                <li><a href="#">隐私政策</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h5>联系我们</h5>
+            <ul>
+                <li>客服邮箱：support@mpguo.com</li>
+                <li>合作洽谈：bd@mpguo.com</li>
+                <li>工作时间：9:00 - 22:00</li>
+            </ul>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>&copy; 2024 木瓜网 版权所有. 保留所有权利。</p>
+    </div>
+</footer>
+
+</body>
+                          </html>
