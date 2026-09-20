@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v姿-专业瑜伽普拉提教学与身心疗愈指南</title>
+    <meta name="description" content="v姿提供专业的瑜伽与普拉提教学资源，涵盖体式详解、呼吸训练、理疗技巧及健康生活方式指南，帮助用户在繁忙生活中寻找身心平衡。">
+    <meta name="keywords" content="v姿, 瑜伽, 普拉提, 瑜伽体式, 身心疗愈, 瑜伽教学, 健康生活">
+    <style>
+        :root {
+            --primary-color: #5D8AA8;
+            --secondary-color: #A9A9A9;
+            --accent-color: #D4A373;
+            --bg-color: #F9F9F9;
+            --text-color: #333;
+            --light-text: #666;
+            --white: #FFFFFF;
+            --spacing-unit: 1rem;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* Layout Utilities */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        .section {
+            padding: 4rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            color: var(--light-text);
+        }
+
+        /* Header & Nav */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--text-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-color);
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        .cta-btn {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 500;
+        }
+
+        .cta-btn:hover {
+            background-color: #4a708f;
+            color: var(--white);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #eef2f3 0%, #dfe9f3 100%);
+            padding: 5rem 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-text h1 span {
+            color: var(--primary-color);
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            color: var(--light-text);
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: var(--white);
+            padding: 0.8rem 2rem;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 0.8rem 2rem;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .hero-image {
+            flex: 1;
+            position: relative;
+        }
+
+        .hero-image img {
+            border-radius: var(--border-radius);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        /* Features Grid */
+        .features {
+            background-color: var(--white);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            padding: 2rem;
+            background: var(--bg-color);
+            border-radius: var(--border-radius);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .feature-card h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-card p {
+            color: var(--light-text);
+            font-size: 0.9rem;
+        }
+
+        /* Categories */
+        .categories {
+            background-color: #F4F6F8;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .category-item {
+            background-color: var(--white);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+        }
+
+        .category-item h4 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        /* Guide Section */
+        .guide-section {
+            background-color: var(--white);
+        }
+
+        .guide-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+        }
+
+        .guide-content h3 {
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 1rem;
+        }
+
+        .guide-content p {
+            margin-bottom: 1.5rem;
+            color: var(--light-text);
+        }
+
+        .check-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+
+        .check-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .sidebar-card {
+            background-color: var(--bg-color);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 1.5rem;
+        }
+
+        .sidebar-card h4 {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .sidebar-card ul li {
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.5rem;
+        }
+
+        /* FAQ */
+        .faq {
+            background-color: var(--bg-color);
+        }
+
+        .faq-item {
+            background-color: var(--white);
+            margin-bottom: 1rem;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem 1.5rem 1.5rem;
+            color: var(--light-text);
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question {
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h4 {
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col ul li a {
+            color: #bdc3c7;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--white);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-text p {
+                margin: 0 auto 2rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .nav-container {
+                flex-direction: column;
+                height: auto;
+                padding: 1rem 0;
+            }
+
+            nav ul {
+                margin: 1rem 0;
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .guide-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-color);">
+                    <path d="M12 2.69l5.74 5.88-5.74 5.88-5.74-5.88z"></path>
+                    <path d="M2 22l10-10 10 10"></path>
+                </svg>
+                <span>v姿</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#home">首页</a></li>
+                    <li><a href="#courses">课程体系</a></li>
+                    <li><a href="#guide">练习指南</a></li>
+                    <li><a href="#faq">常见问题</a></li>
+                </ul>
+            </nav>
+            <a href="#courses" class="cta-btn">开始练习</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <h1>重塑身心平衡，<br><span>v姿</span>助你开启健康生活</h1>
+                    <p>无论你是瑜伽初学者还是资深爱好者，v姿都为你提供科学的体式解析、呼吸引导与身心疗愈方案，让每一次练习都成为身心的滋养。</p>
+                    <div class="hero-buttons">
+                        <a href="#courses" class="btn-primary">浏览课程</a>
+                        <a href="#guide" class="btn-secondary">了解体式</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://picsum.photos/seed/yoga_pose/600/450" alt="专业瑜伽体式展示" width="600" height="450">
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="section features">
+            <div class="container">
+                <div class="section-header">
+                    <h2>为什么选择 v姿？</h2>
+                    <p>基于科学解剖学与传统瑜伽智慧，打造全方位的健康解决方案</p>
+                </div>
+                <div class="features-grid">
+                    <article class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h3>精准体式定位</h3>
+                        <p>针对不同身体条件提供个性化调整建议，避免运动损伤。</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon">🧘</div>
+                        <h3>深度呼吸训练</h3>
+                        <p>引导正确的呼吸方式，连接身心，提升练习效果与专注力。</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon">🛡️</div>
+                        <h3>科学安全防护</h3>
+                        <p>提供详细的辅助工具使用方法与安全注意事项，确保练习安全。</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon">🌿</div>
+                        <h3>身心疗愈方案</h3>
+                        <p>结合瑜伽与冥想，缓解压力，改善睡眠，提升整体生活质量。</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories Section -->
+        <section class="section categories">
+            <div class="container">
+                <div class="section-header">
+                    <h2>热门练习分类</h2>
+                    <p>探索适合你的 v姿 专项训练</p>
+                </div>
+                <div class="category-grid">
+                    <a href="#" class="category-item">
+                        <h4>哈他瑜伽</h4>
+                        <p>基础体式与呼吸结合</p>
+                    </a>
+                    <a href="#" class="category-item">
+                        <h4>普拉提核心</h4>
+                        <p>强化腹部与脊柱力量</p>
+                    </a>
+                    <a href="#" class="category-item">
+                        <h4>流瑜伽</h4>
+                        <p>流畅的动作序列</p>
+                    </a>
+                    <a href="#" class="category-item">
+                        <h4>阴瑜伽</h4>
+                        <p>深层拉伸与放松</p>
+                    </a>
+                    <a href="#" class="category-item">
+                        <h4>理疗修复</h4>
+                        <p>改善肩颈腰背不适</p>
+                    </a>
+                    <a href="#" class="category-item">
+                        <h4>晨间唤醒</h4>
+                        <p>开启活力一天</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Guide Section -->
+        <section id="guide" class="section guide-section">
+            <div class="container guide-layout">
+                <div class="guide-content">
+                    <h2>科学练习指南</h2>
+                    <div style="margin-bottom: 2rem;">
+                        <h3>如何正确开始 v姿 练习？</h3>
+                        <p>很多初学者在开始时容易忽视细节，导致效果不佳甚至受伤。v姿 建议按照以下步骤建立练习习惯：</p>
+                        <ul class="check-list">
+                            <li><strong>环境准备：</strong>选择平坦、通风、温度适宜的空间，准备好瑜伽垫。</li>
+                            <li><strong>热身激活：</strong>练习前进行5-10分钟的关节活动与动态拉伸，唤醒肌肉。</li>
+                            <li><strong>专注呼吸：</strong>将注意力集中在呼吸与动作的配合上，保持平稳的节奏。</li>
+                            <li><strong>循序渐进：</strong>根据自身身体反馈调整难度，不要盲目追求高难度动作。</li>
+                            <li><strong>练习后放松：</strong>进行静态拉伸与冥想，帮助身体恢复与修复。</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>常见体式解析：山式</h3>
+                        <p>山式是所有体式的根基。它不仅仅是站立，更是对脊柱排列、核心稳定与身体重心的全面觉知。保持双脚平行，大腿肌肉收紧上提，脊柱延展，双肩下沉，感受身体像一棵树一样扎根大地。</p>
+                    </div>
+                </div>
+                <aside>
+                    <div class="sidebar-card">
+                        <h4>练习小贴士</h4>
+                        <ul>
+                            <li>空腹或饭后2小时练习效果更佳。</li>
+                            <li>穿着宽松透气的衣物。</li>
+                            <li>练习过程中如有剧烈疼痛请立即停止。</li>
+                            <li>保持规律练习比单次时长更重要。</li>
+                            <li>多喝水，补充练习流失的水分。</li>
+                        </ul>
+                    </div>
+                    <div class="sidebar-card" style="background-color: var(--primary-color); color: white;">
+                        <h4 style="color: white;">加入社群</h4>
+                        <p style="color: rgba(255,255,255,0.8); margin-bottom: 1rem;">获取每日打卡提醒与专业导师答疑。</p>
+                        <a href="#" class="btn-primary" style="background-color: white; color: var(--primary-color);">立即加入</a>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="section faq">
+            <div class="container">
+                <div class="section-header">
+                    <h2>常见问题</h2>
+                    <p>解答关于 v姿 练习的疑问</p>
+                </div>
+                <div class="faq-list">
+                    <div class="faq-item active">
+                        <div class="faq-question">
+                            <span>我是零基础，适合练习 v姿 吗？</span>
+                            <span>+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>非常适合。v姿 的课程体系涵盖了从初学者到进阶者的所有阶段。初学者可以从基础体式和呼吸课程开始，逐步建立身体意识。我们的指导非常注重安全和细节，帮助你在安全的前提下享受练习。</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>练习 v姿 能减肥吗？</span>
+                            <span>+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>v姿 不仅能燃烧卡路里，更重要的是它能提高基础代谢率、增强肌肉线条并改善体态。虽然瑜伽和普拉提对减脂有辅助作用，但它更侧重于塑造紧致的体型和提升身体柔韧性。</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>练习时需要准备什么道具吗？</span>
+                            <span>+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>基础的练习只需要一张瑜伽垫。随着练习深入，你可能需要瑜伽砖、伸展带、抱枕等辅助工具来辅助完成动作或增加难度。v姿 的课程指南中会详细介绍每种道具的用途。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>v姿</h4>
+                    <p style="color: #bdc3c7; font-size: 0.9rem;">
+                        致力于推广健康、科学的身心练习方式，让更多人通过瑜伽与普拉提找到内心的平静与身体的活力。
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="#home">回到首页</a></li>
+                        <li><a href="#courses">课程体系</a></li>
+                        <li><a href="#guide">练习指南</a></li>
+                        <li><a href="#faq">常见问题</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>联系我们</h4>
+                    <ul>
+                        <li><a href="#">合作咨询</a></li>
+                        <li><a href="#">加入讲师团队</a></li>
+                        <li><a href="#">意见反馈</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 v姿 - 专业身心练习平台. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <script>
+        // FAQ Toggle Logic
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', event => {
+                const parent = item.parentElement;
+                const isActive = parent.classList.contains('active');
+                
+                // Close all other items
+                document.querySelectorAll('.faq-item').forEach(child => {
+                    child.classList.remove('active');
+                });
+
+                // Toggle current item
+                if (!isActive) {
+                    parent.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+  </html>
